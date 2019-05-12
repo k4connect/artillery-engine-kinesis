@@ -24,10 +24,12 @@ KinesisEngine.prototype.createScenario = function createScenario (scenarioSpec, 
 KinesisEngine.prototype.step = function step (rs, ee) {
   const self = this;
 
+  let opts = {};
+
   if (rs.loop) {
     const steps = rs.loop.map(loopStep => this.step(loopStep, ee));
 
-    return this.helpers.createLoopWithCount(rs.count || -1, steps);
+    return this.helpers.createLoopWithCount(rs.count || -1, steps, opts);
   }
 
   if (rs.log) {
