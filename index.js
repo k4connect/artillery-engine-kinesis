@@ -6,13 +6,13 @@ const Kinesis = require('aws-sdk/clients/kinesis');
 const debug = require('debug')('engine:kinesis');
 const A = require('async');
 const _ = require('lodash');
-const csv = require("csvtojson");
+const sampleData = require('./records');
 
-let sampleData = {};
-csv().fromFile('./Changes.csv').then(function(jsonArrayObj){ 
-//when parse finished, result will be emitted here.
-   sampleData =jsonArrayObj; 
- })
+// let sampleData = {};
+// csv().fromFile('./Changes.csv').then(function(jsonArrayObj){ 
+// //when parse finished, result will be emitted here.
+//    sampleData =jsonArrayObj; 
+//  })
 
 function KinesisEngine (script, ee, helpers) {
   this.script = script;
@@ -65,8 +65,8 @@ KinesisEngine.prototype.step = function step (rs, ee) {
   if (rs.putRecord) {
     return function putRecord (context, callback) {
       
-      let rand = sampleData[Math.floor(Math.random() * sampleData.length)];
-      rand.occurredOn = (new Date).getTime();
+      let rand = sampleData.records[Math.floor(Math.random() * sampleData.length)];
+      rand.timestamp = (new Date).getTime();
       
       const data = JSON.stringify(rand);
 
