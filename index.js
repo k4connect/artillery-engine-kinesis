@@ -69,8 +69,8 @@ KinesisEngine.prototype.step = function step (rs, ee) {
       rand.occurredOn = (new Date).getTime();
       
       const data = typeof rand === 'object'
-            ? JSON.stringify(rs.putRecord.data)
-            : String(rs.putRecord.data);
+            ? JSON.stringify(rand)
+            : String(rand);
 
       const params = {
         Data: data,
