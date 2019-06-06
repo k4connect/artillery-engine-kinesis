@@ -65,8 +65,7 @@ KinesisEngine.prototype.step = function step (rs, ee) {
   if (rs.putRecord) {
     return function putRecord (context, callback) {
       
-      let rand = sampleData.records[Math.floor(Math.random() * sampleData.length)];
-      rand.timestamp = (new Date).getTime();
+      let rand = {"analyticsId": "323dc023-4b47-4a24-adf4-d165e7a84823", "path":"Devices/Living Room/Controller/variables/wifi/rssi","oidstring":null,"cls":"com.k4connect.controller","type":"string","value":"-20.","fromguid":"273dc023-4b47-4a24-adf4-d165e7a84891","timestamp":155920817255,"timezoneoffset":300};
       
       const data = JSON.stringify(rand);
 
