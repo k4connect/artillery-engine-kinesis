@@ -6,6 +6,7 @@
  const debug = require('debug')('engine:kinesis');
  const A = require('async');
  const _ = require('lodash');
+ const sampleData = require('./records');
  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
@@ -57,10 +58,9 @@
  
    if (rs.putRecord) {
      return function putRecord (context, callback) {
-       rs.putRecord.data.analyticsId = '773dc023-4b47-4a24-adf4-d165e7a84891'
-       const data = typeof rs.putRecord.data === 'object'
-             ? JSON.stringify(rs.putRecord.data)
-             : String(rs.putRecord.data);
+       const data = typeof sampleData.records[1] === 'object'
+             ? JSON.stringify(sampleData.records[1])
+             : String(sampleData.records[1]);
  
        const params = {
          Data: data,
