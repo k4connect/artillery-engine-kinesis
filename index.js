@@ -7,6 +7,7 @@
  const A = require('async');
  const _ = require('lodash');
  const sampleData = require('./records');
+ const randAnalytics = require('./analyticIDs');
  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
@@ -60,6 +61,7 @@
      return function putRecord (context, callback) {
        randData = sampleData.records[Math.floor(Math.random()*sampleData.records.length)];
        randData.timestamp = (new Date).getTime();
+       randData.analyticsId = randAnalytics[Math.floor(Math.random()*randAnalytics.length)]
        const data = typeof randData === 'object'
              ? JSON.stringify(randData)
              : String(randData);
