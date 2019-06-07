@@ -61,7 +61,7 @@
      return function putRecord (context, callback) {
        randData = sampleData.records[Math.floor(Math.random()*sampleData.records.length)];
        randData.timestamp = (new Date).getTime();
-       randData.analyticsId = randAnalytics[Math.floor(Math.random()*randAnalytics.length)]
+       randData.analyticsId = randAnalytics.IDs[Math.floor(Math.random()*randAnalytics.IDs.length)]
        const data = typeof randData === 'object'
              ? JSON.stringify(randData)
              : String(randData);
