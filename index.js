@@ -59,6 +59,7 @@
    if (rs.putRecord) {
      return function putRecord (context, callback) {
        randData = sampleData.records[Math.floor(Math.random()*sampleData.records.length)];
+       randData.timestamp = (new Date).getTime();
        const data = typeof randData === 'object'
              ? JSON.stringify(randData)
              : String(randData);
