@@ -58,9 +58,10 @@
  
    if (rs.putRecord) {
      return function putRecord (context, callback) {
-       const data = typeof sampleData.records[1] === 'object'
-             ? JSON.stringify(sampleData.records[1])
-             : String(sampleData.records[1]);
+       randData = sampleData.records[Math.floor(Math.random()*sampleData.records.length)];
+       const data = typeof randData === 'object'
+             ? JSON.stringify(randData)
+             : String(randData);
  
        const params = {
          Data: data,
