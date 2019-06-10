@@ -7,14 +7,9 @@
  const A = require('async');
  const _ = require('lodash');
  const randAnalytics = require('./analyticsIDs');
- var csv = require('csvtojson');
-
-let putRecords = {};
-csv()
-.fromFile('./sampleData.csv')
-.then((jsonObj)=>{
-	putRecords = jsonObj;
-})
+ const csvToJson = require('convert-csv-to-json');
+ 
+ let putRecords = csvToJson.getJsonFromCsv("sampleData.csv");
  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
