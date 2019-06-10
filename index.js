@@ -7,13 +7,11 @@
  const A = require('async');
  const _ = require('lodash');
  const randAnalytics = require('./analyticsIDs');
- var csv = require("csvtojson");
+ var csv = require('csvtojson');
 
-	let putRecords = {};
-	csv().fromFile('./sampleData.csv').then(function(jsonArrayObj){ 
-	//when parse finished, result will be emitted here.
-     putRecords =jsonArrayObj; 
-   })
+  let putRecords = {};
+  
+  const putRecords =await csv().fromFile('./sampleData.csv');
  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
