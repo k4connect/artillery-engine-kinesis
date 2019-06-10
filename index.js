@@ -9,7 +9,7 @@
  const randAnalytics = require('./analyticsIDs');
  const csvToJson = require('convert-csv-to-json');
  
- let putRecords = csvToJson.getJsonFromCsv("sampleData.csv");
+ let putRecords = csvToJson.getJsonFromCsv("./sampleData.csv");
  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
