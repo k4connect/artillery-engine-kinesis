@@ -8,10 +8,8 @@
  const _ = require('lodash');
  const randAnalytics = require('./analyticsIDs');
  var csv = require('csvtojson');
-
-  let putRecords = {};
   
-  const putRecords =await csv().fromFile('./sampleData.csv');
+const putRecords =await csv().fromFile('./sampleData.csv');
  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
