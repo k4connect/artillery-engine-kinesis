@@ -7,10 +7,8 @@
  const A = require('async');
  const _ = require('lodash');
  const randAnalytics = require('./analyticsIDs');
- const csvToJson = require('convert-csv-to-json');
- 
- let putRecords = csvToJson.getJsonFromCsv("./sampleData.csv");
- 
+ const sampleData = require('./sampleData');
+  
  function KinesisEngine (script, ee, helpers) {
    this.script = script;
    this.ee = ee;
@@ -61,7 +59,7 @@
  
    if (rs.putRecord) {
      return function putRecord (context, callback) {
-       randData = putRecords[Math.floor(Math.random()*putRecords.length)];
+       randData = sampleData.records[Math.floor(Math.random()*sampleData.records.length)];
        randData.timestamp = (new Date).getTime();
        randData.analyticsId = randAnalytics.IDs[Math.floor(Math.random()*randAnalytics.IDs.length)]
        const data = typeof randData === 'object'
