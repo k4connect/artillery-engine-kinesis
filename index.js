@@ -6,7 +6,7 @@
  const debug = require('debug')('engine:kinesis');
  const A = require('async');
  const _ = require('lodash');
- const randAnalytics = require('./analyticIDs');
+ const randAnalytics = require('./analyticsIDs');
  var csv = require("csvtojson");
 
 	let putRecords = {};
